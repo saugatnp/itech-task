@@ -1,0 +1,80 @@
+<div class="container-fluid p-0 my-4">
+    <!-- Title -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3>Transactions</h3>
+        <div class="fw-bold text-primary">Balance: $5,382.36 USD</div>
+    </div>
+
+    <!-- Filters (Tabs) -->
+    <ul class="nav nav-tabs mb-3 p-0">
+        <li class="nav-item ms-4">
+            <a class="nav-link" href="#" [ngClass]="{'active': selectedFilter === 'All'}"
+                (click)="filterTransactions('All', $event)">All</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#" [ngClass]="{'active': selectedFilter === 'Completed'}"
+                (click)="filterTransactions('Completed', $event)">Completed</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#" [ngClass]="{'active': selectedFilter === 'Pending'}"
+                (click)="filterTransactions('Pending', $event)">Pending</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#" [ngClass]="{'active': selectedFilter === 'Failed'}"
+                (click)="filterTransactions('Failed', $event)">Failed</a>
+        </li>
+    </ul>
+
+    <!-- Table -->
+    <div class="table-responsive mx-4 border border-muted rounded-4">
+        <table class="table table-hover align-middle m-0">
+            <thead class="bg-secondary">
+                <tr>
+                    <th class="bg-body-secondary">ID</th>
+                    <th class="bg-body-secondary">Date</th>
+                    <th class="bg-body-secondary">Description</th>
+                    <th class="bg-body-secondary">Amount</th>
+                    <th class="bg-body-secondary">Status</th>
+                    <th class="bg-body-secondary">Remarks</th>
+                    <th class="bg-body-secondary">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let transaction of paginatedTransactions">
+                    <td>{{ transaction.id }}</td>
+                    <td>{{ transaction.createdDate | date: 'medium' }}</td>
+                    <td>{{ transaction.description }}</td>
+                    <td [ngClass]="{'text-success': transaction.amount > 0, 'text-danger': transaction.amount < 0}">
+                        ${{ transaction.amount }}
+                    </td>
+                    <td>
+                        <span class="badge" [ngClass]="{
+                  'bg-success': transaction.status === 'Completed',
+                  'bg-warning text-dark': transaction.status === 'Pending',
+                  'bg-danger': transaction.status === 'Failed'
+                }">
+                            {{ transaction.status }}
+                        </span>
+                    </td>
+                    <td>{{ transaction.remarks }}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm">Details</button>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="7" class="text-center p-0">
+                        <mat-paginator *ngIf="filteredTransactions.length" [pageSize]="pageSize"
+                            [pageSizeOptions]="pageSizeOptions" [length]="filteredTransactions.length"
+                            (page)="pageEvent = $event">
+                        </mat-paginator>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <!-- Pagination Controls -->
+
+</div>
