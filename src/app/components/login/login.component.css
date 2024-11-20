@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #392381;
+    background-color: var(--primary-color);
 }
 
 .card {
@@ -12,7 +12,7 @@
 }
 
 .lighter-bg {
-    color: #56c1ff;
+    color: var(--secondary-color);
 }
 
 @media screen and (max-width: 600px) {

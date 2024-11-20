@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "createdDate": "2023-10-01T12:00:00Z",
+        "lastModifiedDate": "2023-10-01T12:00:00Z",
+        "description": "Sample transaction",
+        "amount": 100,
+        "remarks": "Initial transaction",
+        "status": "Completed"
+    },
+    {
+        "id": 2,
+        "createdDate": "2023-10-02T12:00:00Z",
+        "lastModifiedDate": "2023-10-02T12:00:00Z",
+        "description": "Sample transaction",
+        "amount": 200,
+        "remarks": "Second transaction",
+        "status": "Pending"
+    },
+    {
+        "id": 3,
+        "createdDate": "2023-10-03T12:00:00Z",
+        "lastModifiedDate": "2023-10-03T12:00:00Z",
+        "description": "Sample transaction",
+        "amount": 300,
+        "remarks": "Third transaction",
+        "status": "Failed"
+    }
+]
