@@ -40,6 +40,6 @@ export class EntryComponent {
   }
 
   onCancel(){
-
+    this.transactionForm.reset();
   }
 }
