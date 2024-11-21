@@ -1,0 +1,27 @@
+<mat-sidenav-container class="h-100 bg-light">
+    <mat-sidenav class="border border-end rounded-0" mode="side" [opened]="openNavBar && showNavbar">
+        <mat-nav-list class="px-2">
+            <a class="d-flex justify-content-center mb-4 rounded-2" routerLink="/home">
+                <img [src]="'/assets/images/angular_gradient.png'" [height]="100" alt="Logo" class="navbar-logo">
+            </a>
+            <a mat-list-item routerLink="/home" [ngClass]="{ 'active': isActive('/home') }" (click)="openNavBarToggle()">
+                <p class="nav-text-color m-0"> <fa-icon [icon]="faListCheck" class="me-2"></fa-icon>
+                    Transaction List</p>
+            </a>
+            <a mat-list-item routerLink="/entry" [ngClass]="{ 'active': isActive('/entry') }" (click)="openNavBarToggle()">
+                <p class="nav-text-color m-0"> <fa-icon [icon]="faFolder" class="me-2"></fa-icon>
+                    Transaction Entry</p>
+            </a>
+            <a mat-list-item (click)="logout()">
+                <p class="nav-text-color m-0"> <fa-icon [icon]="faArrowRightFromBracket" class="me-2"></fa-icon>
+                    Logout</p>
+            </a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="main-container">
+        @if ((!openNavBar) && (showNavbar)) {
+            <mat-icon class="menu-icon d-md-none d-block mt-4" (click)="openNavBar = !openNavBar" [ngClass]="{'behind-sidebar': openNavBar}">menu</mat-icon>
+        }
+        <ng-content></ng-content>
+    </mat-sidenav-content>
+</mat-sidenav-container>

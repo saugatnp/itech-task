@@ -37,12 +37,15 @@ export class TransactionService {
     }
 
     addTransaction(transaction: any) {
+        const generateUniqueId = () => {
+            return Math.random().toString(36).substring(2, 7); // Generates a 5-character alphanumeric string
+        };
+
         const newTransaction = {
             ...transaction,
-            id: this.nextId++,
-            createdDate: new Date(),
-            lastModifiedDate: new Date(),
+            id: generateUniqueId()
         };
+
         const currentTransactions = this.transactionsSubject.value;
         this.transactionsSubject.next([...currentTransactions, newTransaction]);
     }

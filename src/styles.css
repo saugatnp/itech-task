@@ -5,16 +5,16 @@
     --font-size-base: 16px;
     --line-height-base: 1.5;
 }
-html {
-    
-    overflow: hidden;
-}
-html,
-body {
-    height: 100%;
-}
-
-body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+ html,
+ body {
+   height: 100%;
+   overflow: hidden;
+   scroll-behavior: smooth;
+ }
+ body {
+   margin: 0;
+   font-family: Roboto, "Helvetica Neue", sans-serif;
+ }
+.primary-text {
+    color: var(--primary-color);
 }

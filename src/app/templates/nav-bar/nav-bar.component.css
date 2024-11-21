@@ -1,0 +1,30 @@
+mat-sidenav {
+    width: 250px;
+}
+
+@media (max-width: 768px) {
+    mat-sidenav {
+        width:100%;
+    }
+  }
+
+mat-sidenav-content {
+    overflow-x: hidden !important;
+    overflow-y: overlay !important;
+}
+
+mat-nav-list a {
+    margin-bottom: 15px;
+}
+mat-nav-list a p {
+    font-size: medium;
+}
+.active {
+    background-color: rgba(0, 123, 255, 0.2);
+  }
+  .active .nav-text-color{
+    color: blue !important;
+  }
+  .nav-text-color{
+    color: var(--bs-secondary-color);
+  }
