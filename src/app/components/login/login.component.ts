@@ -1,32 +1,45 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faUser, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import { ReusableFunctionsService } from '../../service/reusableFunctions.service';
+import { AuthService } from '../../service/auth.service';
 
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatFormField, MatLabel, FontAwesomeModule, ReactiveFormsModule],
+  imports: [
+    CommonModule, 
+    MatCardModule, 
+    MatFormField, 
+    MatLabel, 
+    FontAwesomeModule, 
+    ReactiveFormsModule
+  ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   faUser = faUser;
   faEye = faEye;
   faEyeSlash = faEyeSlash;
 
   showPassword: boolean = false;
+  returnUrl!: string;
+
 
   constructor(
     private router: Router,
-    private reusableFunctions : ReusableFunctionsService
+    private auth : AuthService,
+    private route: ActivatedRoute
   ) {
+  }
+  ngOnInit(): void {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   loginForm = new FormGroup({
@@ -44,7 +57,8 @@ export class LoginComponent {
 
   submitLogin() {
     if (this.loginForm.valid) {
-      this.reusableFunctions.setLoginToken();
+      this.auth.setLoginToken();
+      this.router.navigateByUrl(this.returnUrl);
     } else {
       this.markFormAsTouched();
     }

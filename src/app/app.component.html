@@ -4,7 +4,7 @@
   <button mat-button routerLink="/login">Login</button>
   <button mat-button routerLink="/transactions">Transactions</button>
 </mat-toolbar> -->
-<mat-sidenav-container class="h-100 bg-white">
+<!-- <mat-sidenav-container class="h-100 bg-light">
   @if (showNavbar) {
   <mat-sidenav mode="side" opened>
     <mat-nav-list>
@@ -19,4 +19,9 @@
   <mat-sidenav-content>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
-</mat-sidenav-container>
+</mat-sidenav-container> -->
+
+
+<app-nav-bar class="h-100">
+  <router-outlet></router-outlet>
+</app-nav-bar>

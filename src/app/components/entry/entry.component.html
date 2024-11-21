@@ -1,0 +1,58 @@
+<div class="container-fluid p-0 my-md-4">
+    <!-- Title -->
+    <div class="d-flex justify-content-center align-items-center mx-4">
+        <h3 class="primary-text">Transaction&nbsp;Entry</h3>
+    </div>
+    <hr class=" mb-4">
+
+    <div class="row">
+
+        <form class="offset-md-4 col-md-4 col-12 p-md-0 p-4" [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
+            <div class="">
+                <h4>Transaction Info</h4>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" formControlName="description" placeholder="Enter description"
+                        rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="createdDate">Created Date</label>
+                    <input id="createdDate" formControlName="createdDate" type="date" max="9999-12-31" />
+                  </div>
+                  <div class="form-group">
+                    <label for="lastModifiedDate">Last Modified Date</label>
+                    <input id="lastModifiedDate" formControlName="lastModifiedDate" type="date"  max="9999-12-31"  />
+                  </div>
+            </div>
+
+            <div class="">
+                <h4>Payment Details</h4>
+                <div class="form-group">
+                    <label for="amount">Amount</label>
+                    <input id="amount" formControlName="amount" type="number" placeholder="Enter amount" />
+                </div>
+                <div class="form-group">
+                    <label for="remarks">Remarks</label>
+                    <textarea id="remarks" formControlName="remarks" placeholder="Enter remarks" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <select id="status" formControlName="status">
+                        <option value="Pending">Pending</option>
+                        <option value="Completed">Completed</option>
+                        <option value="Failed">Failed</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" (click)="onCancel()">Cancel</button>
+                <button type="submit" [disabled]="transactionForm.invalid">Submit</button>
+            </div>
+        </form>
+
+
+    </div>
+
+
+</div>

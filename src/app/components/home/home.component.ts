@@ -4,16 +4,30 @@ import { Transactions } from '../../model/transactions.model';
 import { CommonModule } from '@angular/common';
 import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { Config } from '../../config';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormsModule } from '@angular/forms';
+import { debounceTime, Subject } from 'rxjs';
+
+
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, MatPaginatorModule],
+  imports: [
+    CommonModule,
+    FormsModule, 
+    MatPaginatorModule,
+    FontAwesomeModule
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
+  faSearch = faSearch;
+
+  search : string = '';
 
   transactions: Transactions[] = [];
   paginatedTransactions: Transactions[] = [];
@@ -74,6 +88,20 @@ export class HomeComponent implements OnInit {
       this.filteredTransactions = this.transactions.filter(transaction => transaction.status === filter);
     }
     this.paginateTransactions();
+  }
+
+  private searchValue: Subject<string> = new Subject<string>();
+
+  searchData(){
+    this.searchValue.next(this.search);
+    this.searchValue.pipe(debounceTime(400)).subscribe((value) => {
+      if(value){
+      this.filteredTransactions = this.filteredTransactions.filter(transaction => transaction.description.toLowerCase().includes(value.toLowerCase()));
+      this.paginateTransactions();
+      } else {
+      this.filterTransactions(this.selectedFilter);
+      }
+    });
   }
 
 }
