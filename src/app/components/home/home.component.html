@@ -67,7 +67,7 @@
                     <td class="table-description text-muted text-truncate">{{ transaction.description }}</td>
                     <td
                         [ngClass]="{'text-success fw-bold': transaction.amount > 0, 'text-danger': transaction.amount < 0}">
-                        ${{ transaction.amount }}
+                        {{ transaction.amount | number:'.2' }}
                     </td>
                     <td>
                         <span class="badge rounded-4 px-3" [ngClass]="{
