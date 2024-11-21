@@ -40,17 +40,4 @@ import { MatIconModule } from '@angular/material/icon';
 export class AppComponent {
   title = 'itech-task';
 
-
-  showNavbar: boolean = true;
-
-  constructor(
-    private router: Router
-  ) {
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        const currentRoute = this.router.routerState.snapshot.root.firstChild;
-        this.showNavbar = currentRoute?.data['showNavbar'] ?? true;
-      }
-    });
-  }
 }

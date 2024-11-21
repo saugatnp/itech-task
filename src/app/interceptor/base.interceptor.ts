@@ -3,8 +3,7 @@ import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 // Base URL for api requests
-const baseUrl = 'http://localhost:3000';
-
+// export const baseUrl = 'http://localhost:4200';
 
 /**
  * 

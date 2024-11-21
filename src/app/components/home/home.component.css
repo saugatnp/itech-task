@@ -1,13 +1,14 @@
 th{
     padding: 10px 30px;
     color: var(--primary-color);
+    font-weight: 500;
 }
 td{
     padding: 15px 30px;
 }
 .active{
     color: var(--primary-color) !important;
-    font-weight: 600;
+    font-weight: 500;
 }
 .nav-link{
     color: lightslategray
@@ -34,3 +35,7 @@ td{
     font-weight: 500;
     border-color: lightgray;
 }
+::ng-deep .mat-sort-header-container:not(.mat-sort-header-sorted) .mat-sort-header-arrow {
+    opacity: 0.54 !important;
+    transform: translateY(0px) !important;
+  }

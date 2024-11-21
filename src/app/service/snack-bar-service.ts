@@ -12,6 +12,11 @@ export class SnackBarService {
 
     }
 
+    /**
+     * 
+     * @param message  message to be displayed
+     * @param action  action performed
+     */
     openSnackBar(message: string, action: string) {
         this.snackBar.open(message, action, {
             duration: 3000,

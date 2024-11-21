@@ -13,11 +13,11 @@ import { AuthService } from '../../service/auth.service';
   selector: 'app-login',
   standalone: true,
   imports: [
-    CommonModule, 
-    MatCardModule, 
-    MatFormField, 
-    MatLabel, 
-    FontAwesomeModule, 
+    CommonModule,
+    MatCardModule,
+    MatFormField,
+    MatLabel,
+    FontAwesomeModule,
     ReactiveFormsModule
   ],
   templateUrl: './login.component.html',
@@ -31,28 +31,23 @@ export class LoginComponent implements OnInit {
   showPassword: boolean = false;
   returnUrl!: string;
 
-
-  constructor(
-    private router: Router,
-    private auth : AuthService,
-    private route: ActivatedRoute
-  ) {
-  }
-  ngOnInit(): void {
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-  }
-
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
   });
 
-  private markFormAsTouched() {
-    Object.keys(this.loginForm.controls).forEach((key) => {
-      const control = this.loginForm.get(key);
-      control?.markAsTouched();
-    });
+  constructor(
+    private router: Router,
+    private auth: AuthService,
+    private route: ActivatedRoute
+  ) {
   }
+
+
+  ngOnInit(): void {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+  }
+
 
 
   submitLogin() {
@@ -63,5 +58,15 @@ export class LoginComponent implements OnInit {
       this.markFormAsTouched();
     }
   }
+
+
+
+  private markFormAsTouched() {
+    Object.keys(this.loginForm.controls).forEach((key) => {
+      const control = this.loginForm.get(key);
+      control?.markAsTouched();
+    });
+  }
+
 
 }
