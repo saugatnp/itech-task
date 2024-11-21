@@ -20,7 +20,9 @@ export class TransactionService {
 
 
 
-
+    /**
+     * Get transactions from the file
+     */
     getTransactionsFromFile() {
         this.http.get<Array<Transactions>>('assets/data/transaction.json').subscribe({
             next: (data) => {
@@ -32,13 +34,23 @@ export class TransactionService {
         });
     }
 
+
+    /**
+     * 
+     * @returns the list of transactions as observable
+     */
     getTransactions(): Observable<Array<Transactions>> {
         return this.transactions$;
     }
 
+
+    /**
+     * 
+     * @param transaction the transaction to be added
+     */
     addTransaction(transaction: any) {
         const generateUniqueId = () => {
-            return Math.random().toString(36).substring(2, 7); // Generates a 5-character alphanumeric string
+            return Math.random().toString(36).substring(2, 7);
         };
 
         const newTransaction = {

@@ -1,29 +1,74 @@
 [
     {
-        "id": 1,
-        "createdDate": "2023-10-01T12:00:00Z",
-        "lastModifiedDate": "2023-10-01T12:00:00Z",
-        "description": "Sample transaction Sample transaction Sample transaction Sample transaction Sample transaction Sample transaction Sample transaction Sample transaction Sample transaction",
-        "amount": 100,
-        "remarks": "Initial transaction Initial transaction Initial transaction Initial transaction Initial transaction Initial transactionInitial transaction ",
+        "id": "ad389",
+        "createdDate": "2024-11-01T08:45:00Z",
+        "lastModifiedDate": "2024-11-01T08:50:00Z",
+        "description": "Payment for October electricity bill",
+        "amount": 120.50,
+        "remarks": "Paid via online banking",
         "status": "Completed"
     },
     {
-        "id": 2,
-        "createdDate": "2023-10-02T12:00:00Z",
-        "lastModifiedDate": "2023-10-02T12:00:00Z",
-        "description": "demo",
-        "amount": 200,
-        "remarks": "Second transaction",
+        "id": "tx0t2",
+        "createdDate": "2024-11-02T14:30:00Z",
+        "lastModifiedDate": "2024-11-02T14:35:00Z",
+        "description": "Monthly subscription for streaming service",
+        "amount": 15.99,
+        "remarks": "Recurring payment",
+        "status": "Completed"
+    },
+    {
+        "id": "1d6mn",
+        "createdDate": "2024-11-03T10:15:00Z",
+        "lastModifiedDate": "2024-11-03T10:20:00Z",
+        "description": "Grocery shopping at local supermarket",
+        "amount": 75.30,
+        "remarks": "Includes fruits, vegetables, and snacks",
+        "status": "Completed"
+    },
+    {
+        "id": "e5y67",
+        "createdDate": "2024-11-04T18:00:00Z",
+        "lastModifiedDate": "2024-11-04T18:10:00Z",
+        "description": "Payment for car insurance renewal",
+        "amount": 350.00,
+        "remarks": "Annual premium",
+        "status": "Failed"
+    },
+    {
+        "id": "e3uhc",
+        "createdDate": "2024-11-05T09:25:00Z",
+        "lastModifiedDate": "2024-11-05T09:30:00Z",
+        "description": "Refund from online store for returned item",
+        "amount": -25.75,
+        "remarks": "Refund for defective product",
+        "status": "Completed"
+    },
+    {
+        "id": "3e9qs",
+        "createdDate": "2024-11-06T16:45:00Z",
+        "lastModifiedDate": "2024-11-06T16:50:00Z",
+        "description": "Purchase of office supplies",
+        "amount": 58.99,
+        "remarks": "Includes pens, notebooks, and folders",
         "status": "Pending"
     },
     {
-        "id": 3,
-        "createdDate": "2023-10-03T12:00:00Z",
-        "lastModifiedDate": "2023-10-03T12:00:00Z",
-        "description": "Sample transaction",
-        "amount": 300,
-        "remarks": "Third transaction",
-        "status": "Failed"
+        "id": "vg58d",
+        "createdDate": "2024-11-07T11:00:00Z",
+        "lastModifiedDate": "2024-11-07T11:05:00Z",
+        "description": "Donation to local charity",
+        "amount": 100.00,
+        "remarks": "Contribution towards education initiatives",
+        "status": "Completed"
+    },
+    {
+        "id": "b7h8k",
+        "createdDate": "2024-11-08T13:20:00Z",
+        "lastModifiedDate": "2024-11-08T13:25:00Z",
+        "description": "Payment for gym membership",
+        "amount": 45.00,
+        "remarks": "Monthly membership fee",
+        "status": "Pending"
     }
 ]

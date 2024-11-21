@@ -1,18 +1,15 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: 'root',
 })
 export class AuthService {
+    router = Inject(Router);
 
-  
-
-    constructor(
-        private router: Router
-    ) {
-    }
-
+    /**
+     * Set the login token in local storage
+     */
     setLoginToken() {
         const now = new Date();
         const item = {
@@ -23,6 +20,10 @@ export class AuthService {
     }
 
 
+    /**
+     * 
+     * @returns the login token if it is valid else returns null
+     */
     getLoginToken() {
         const token = localStorage.getItem('mock-task-token');
         if (!token) {
@@ -37,6 +38,11 @@ export class AuthService {
         return item.value;
     }
 
+
+    /**
+     * 
+     * @returns true if the token is valid else returns false
+     */
     checkTokenValidity(){
         const token = localStorage.getItem('mock-task-token');
         if (!token) {
@@ -51,6 +57,10 @@ export class AuthService {
         return true;
     }
 
+
+    /**
+     * Log out the user or remove the token from local storage
+     */
     logOut(){
         const confirmLogout = window.confirm('Are you sure you want to log out?');
         if (confirmLogout) {
@@ -58,10 +68,6 @@ export class AuthService {
           this.router.navigate(['/home']);
         }
     }
-
-
-
-   
 
 
 }

@@ -1,0 +1,36 @@
+<div class="dialog-container">
+    <h3 class="fw-normal text-center mt-3 primary-text">Transaction Detail</h3>
+    <hr class=" mb-4">
+
+
+    <mat-dialog-content class="my-4">
+
+        <h6>ID</h6>
+        <p>{{data.id}}</p>
+
+        <h6>Created &amp; Date</h6>
+        <p>{{data.createdDate | date:'yyyy-MM-dd' }}</p>
+
+        <h6>Last &amp; Modified &amp; Date</h6>
+        <p>{{data.lastModifiedDate | date:'yyyy-MM-dd' }}</p>
+
+        <h6>Description</h6>
+        <p>{{data.description}}</p>
+
+        <h6>Amount</h6>
+        <p [ngClass]="{'text-success': data.amount > 0, 'text-danger': data.amount < 0}">{{data.amount | number:'.2'}}</p>
+
+        <h6>Status</h6>
+        <span class="badge rounded-4 px-3 py-1 mb-2 fw-normal" [ngClass]="{
+            'bg-success': data.status === 'Completed',
+            'bg-dark-subtle': data.status === 'Pending',
+            'bg-danger': data.status === 'Failed'
+          }">{{data.status}}</span>
+
+
+        <h6>Remarks</h6>
+        <p>{{data.remarks}}</p>
+        
+    </mat-dialog-content>
+    <hr class=" mb-4">
+</div>

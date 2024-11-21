@@ -2,18 +2,21 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TransactionService } from '../../service/transaction.service';
 import { SnackBarService } from '../../service/snack-bar-service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-entry',
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    
+    CommonModule
   ],
   templateUrl: './entry.component.html',
   styleUrl: './entry.component.css'
 })
 export class EntryComponent {
+
+
   transactionForm: FormGroup;
 
   constructor(
@@ -21,6 +24,7 @@ export class EntryComponent {
     private transactionService: TransactionService,
     private snackBarService : SnackBarService
   ) {
+
     this.transactionForm = this.fb.group({
       createdDate: ['', Validators.required],
       lastModifiedDate: ['', Validators.required],
@@ -31,6 +35,8 @@ export class EntryComponent {
     });
   }
 
+
+
   onSubmit() {
     if (this.transactionForm.valid) {
       this.transactionService.addTransaction(this.transactionForm.value);
@@ -39,7 +45,9 @@ export class EntryComponent {
     }
   }
 
+
   onCancel(){
     this.transactionForm.reset();
   }
+  
 }

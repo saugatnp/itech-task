@@ -1,9 +1,14 @@
 <div class="container-fluid p-0 my-md-4">
+
     <!-- Title -->
     <div class="d-flex justify-content-center align-items-center mx-4">
         <h3 class="primary-text">Transactions</h3>
     </div>
+
     <hr class=" mb-4">
+
+
+
     <!-- Search Bar for Mobile View -->
     <div class="d-block d-md-none mx-4 mb-3">
         <div class="input-group rounded-4">
@@ -14,6 +19,7 @@
                 [(ngModel)]="search" (ngModelChange)="searchData()" />
         </div>
     </div>
+
 
     <!-- Filters (Tabs) -->
     <ul class="nav nav-tabs pt-2 mb-3 p-0">
@@ -44,16 +50,19 @@
         </li>
     </ul>
 
+
+
+
     <!-- Table -->
     <div class="table-responsive mx-4 mb-4 border border-muted rounded-4">
-        <table class="table table-hover align-middle m-0">
+        <table class="table table-hover align-middle m-0" matSort (matSortChange)="sortData($event)">
             <thead class="bg-secondary">
                 <tr>
                     <th class="bg-body-secondary">ID</th>
                     <th class="bg-body-secondary">Created Date</th>
                     <th class="bg-body-secondary">Modified Date</th>
                     <th class="bg-body-secondary">Description</th>
-                    <th class="bg-body-secondary">Amount</th>
+                    <th class="bg-body-secondary" mat-sort-header="amount">Amount</th>
                     <th class="bg-body-secondary">Status</th>
                     <th class="bg-body-secondary">Remarks</th>
                     <th class="bg-body-secondary">Action</th>
@@ -61,26 +70,26 @@
             </thead>
             <tbody>
                 <tr *ngFor="let transaction of paginatedTransactions">
-                    <td>{{ transaction.id }}</td>
-                    <td>{{ transaction.createdDate | date: 'yyyy-MM-dd' }}</td>
-                    <td>{{ transaction.lastModifiedDate | date: 'yyyy-MM-dd' }}</td>
-                    <td class="table-description text-muted text-truncate">{{ transaction.description }}</td>
-                    <td
-                        [ngClass]="{'text-success fw-bold': transaction.amount > 0, 'text-danger': transaction.amount < 0}">
+                    <td class="small">{{ transaction.id }}</td>
+                    <td class="small">{{ transaction.createdDate | date: 'yyyy-MM-dd' }}</td>
+                    <td class="small">{{ transaction.lastModifiedDate | date: 'yyyy-MM-dd' }}</td>
+                    <td class="small table-description text-muted text-truncate">{{ transaction.description }}</td>
+                    <td class="small"
+                        [ngClass]="{'text-success': transaction.amount > 0, 'text-danger': transaction.amount < 0}">
                         {{ transaction.amount | number:'.2' }}
                     </td>
-                    <td>
-                        <span class="badge rounded-4 px-3" [ngClass]="{
-                  'bg-success': transaction.status === 'Completed',
-                  'bg-dark-subtle': transaction.status === 'Pending',
-                  'bg-danger': transaction.status === 'Failed'
-                }">
+                    <td class="small">
+                        <span class="badge rounded-4 px-3 " [ngClass]="{
+                            'bg-success': transaction.status === 'Completed',
+                            'bg-dark-subtle': transaction.status === 'Pending',
+                            'bg-danger': transaction.status === 'Failed'}">
                             {{ transaction.status }}
                         </span>
                     </td>
-                    <td class="table-remarks text-muted text-truncate">{{ transaction.remarks }}</td>
-                    <td>
-                        <button class="btn btn-details btn-sm">Details</button>
+                    <td class="small table-remarks text-muted text-truncate">{{ transaction.remarks }}</td>
+                    <td class="small">
+                        <button class="btn btn-details btn-sm" mat-button
+                            (click)="openDialog(transaction)">Details</button>
                     </td>
                 </tr>
                 <tr *ngIf="paginatedTransactions.length == 0">
@@ -92,6 +101,7 @@
             <tfoot>
                 <tr>
                     <td colspan="7" class="text-center p-0">
+                        <!-- Pagination Controls -->
                         <mat-paginator *ngIf="filteredTransactions.length" [pageSize]="pageSize"
                             [pageSizeOptions]="pageSizeOptions" [length]="filteredTransactions.length"
                             (page)="pageEvent = $event">
@@ -102,6 +112,5 @@
         </table>
     </div>
 
-    <!-- Pagination Controls -->
 
 </div>
